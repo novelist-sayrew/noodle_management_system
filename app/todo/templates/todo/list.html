@@ -1,0 +1,107 @@
+{% extends "todo/base.html" %}
+
+{% block title %} - 商品名一覧 {% endblock %}
+
+{% block css %}
+<style>
+.todo-item{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.todo-row-top{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.todo-row-bottom{
+    display: flex;
+    gap: 10px;
+}
+
+.timeout-food{
+    color: red;
+}
+
+.safe-food{
+    color: rgb(134, 134, 3);
+}
+
+.delete-button{
+    color: white;
+    background-color: red;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+<h2>商品名一覧</h2>
+<hr>
+<h3>賞味期限切れの商品</h3>
+
+{% if expired_items %}
+    <ul>
+        {% for item in expired_items %}
+            <li class="timeout-food">{{item.title}}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <P>なし</P>
+{% endif %}
+
+<hr>
+<h3>賞味期限が5日以内の商品</h3>
+<ul>一覧ページは、<a href="{{url_for('todo.warning')}}">こちら</a></ul>
+
+<hr>
+<h3>商品データ一覧</h3>
+<ul>
+{% for todo in todos %}
+    <li class="todo-item">
+        <div class="todo-row-top">
+            <span class="todo-marker">-----</span>
+        </div>
+
+        <div class="todo-row-middle">
+            <span class="todo-expiry">賞味期限:{{todo.expiry_date.strftime("%Y-%m-%d")}}</span>
+        </div>
+
+        <div class="todo-row-middle2">
+            <span class="todo-title">商品名:{{todo.title}}</span>
+        </div>
+
+        <div class="todo-row-middle3">
+            {% if todo.remaining_days<0 %}
+                <span class="timeout-food">(賞味期限が切れました)</span>
+                {% elif todo.remaining_days <= 5 %}
+                    <span class="safe-food">(期限切れまで、あと{{todo.remaining_days}}日)</span>
+            {% else %}
+                <span class="todo-remaining_days">(期限切れまで、あと{{todo.remaining_days}}日)</span>
+            {% endif %}
+        </div>
+
+        <div class="todo-row-bottom">
+            [<a href="{{url_for('todo.edit',id=todo.id)}}">編集</a>]
+
+            <form method="post" action="{{url_for('todo.delete',id=todo.id)}}">
+                <button class="delete-button" type="submit" onclick="return confirmDelete();">削除</button>
+            </form>
+        </div>
+    </li>
+{% else %}
+    <li>データがありません</li>
+{% endfor %}
+</ul>
+{% endblock %}
+{% block script %}
+<script>
+    function confirmDelete(){
+        return confirm("本当に削除しますか？");
+    }
+</script>
+
+{% endblock %}

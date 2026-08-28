@@ -1,0 +1,14 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+    <h2>新規登録</h2>
+    <hr>
+    <form method="post">
+        {{form.hidden_tag()}}
+        <P>{{form.username.label}}<br>{{form.username(size=32)}}</P>
+        <P>{{form.email.label}}<br>{{form.email(size=32)}}</P>
+        <P>{{form.password.label}}<br>{{form.password(size=32)}}</P>
+        <P>{{form.password2.label}}<br>{{form.password2(size=32)}}</P>
+        <P>{{form.submit()}}</P>
+    </form>
+{% endblock %}

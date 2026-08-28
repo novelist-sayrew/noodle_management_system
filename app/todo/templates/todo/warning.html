@@ -1,0 +1,47 @@
+{% extends "todo/base.html" %}
+
+{% block title %} - 5日以内の商品一覧   {% endblock %}
+
+{% block css %}
+<style>
+.delete-button{
+    color: white;
+    background-color: red
+}
+
+
+
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+<h2>賞味期限が5日以内の商品一覧</h2>
+<hr>
+
+{% if warning_items %}
+    <ul>
+        {% for item in warning_items %}
+            <li>
+                賞味期限:{{item.expiry_date}}<br>
+                商品名:{{item.title}}<br>
+                (期限切れまで、あと{{item.remaining_days}}日)<br>
+                [<a href="{{url_for('todo.edit',id=item.id)}}">編集</a>]
+                <form action="{{url_for('todo.delete',id=item.id)}}" method="post" style="display: inline;">
+                    <button class="delete-button" type="submit" onclick="return confirmDelete();">削除</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <P>期限が近い商品はありません。</P>
+{% endif %}
+{% endblock %}
+{% block script %}
+<script>
+    function confirmDelete(){
+        return confirm("本当に削除しますか？");
+    }
+</script>
+{% endblock %}

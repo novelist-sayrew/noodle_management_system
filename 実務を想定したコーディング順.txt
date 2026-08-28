@@ -1,0 +1,15 @@
+1. config.py
+2. run.py
+3. __init__.py(appフォルダ直下)
+4. models.py
+5. __init__.py(authフォルダ直下)
+6. routes.py(authフォルダ直下)
+7. login.html
+8. register.html
+9. forms.py
+10.__init__.py(todoフォルダ直下)
+11.models.py(新しいモデルの追加)
+12.routes.py(authフォルダ直下)
+13.list.html
+14.form.html
+15.base.html
