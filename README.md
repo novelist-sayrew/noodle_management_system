@@ -63,18 +63,20 @@
 →モデルの管理・クエリ処理として使用。<br>
 
 ## ●バックグランド処理
-・<br>
-・<br>
-・<br>
-・<br>
-・<br>
+・APScheduler<br>
+→期限切れトークンの自動削除機能として使用。<br>
 
 ## ●環境管理・設定
-・<br>
-・<br>
+・Python-dotenv<br>
+→.envによる環境変数管理機能として使用。<br>
+
+・config.py<br>
+→設定ファイルとして使用。<br>
+
+・SECRET_KEY<br>
 
 ## ●その他の構造・設計
-・<br>
-・<br>
-
+・Blueprint<br>
+・create_app方式によるアプリの起動。<br>
+・アプリケーションコンテキスト。<br>
 <hr>
