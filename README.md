@@ -29,9 +29,8 @@
 ・パスワード再発行トークンの生成と、トークンの制限時間を管理する機能。<br>
 ・APSchedulerによる、期限切れトークンの自動削除機能。<br>
 ・Flask-WTFによるCSRF対策。<br>
-・author・noodleの機能ごとによるBlueprintの分離。<br>
 ・.envによる環境変数の管理。<br>
+・author・noodleの機能ごとによるBlueprintの分離。<br>
 ・SQLAlchemyORMによる、SQLiteデータベースの管理。<br>
-・<br>
-・<br>
-・<br>
+
+# 5.
