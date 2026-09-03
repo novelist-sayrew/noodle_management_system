@@ -36,5 +36,6 @@
 ・.envによる環境変数の管理。<br>
 ・author・noodleの機能ごとによるBlueprintの分離。<br>
 ・SQLAlchemyORMによる、SQLiteデータベースの管理。<br>
+<hr>
 
 # 5.
