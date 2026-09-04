@@ -78,39 +78,39 @@
 ## ●その他の構造・設計
 ・Blueprint<br>
 ・create_app方式によるアプリの起動。<br>
-・アプリケーションコンテキスト。<br>
+・アプリケーションコンテキスト。 <br>
 <hr>
 
 6.ファイル構造
-C:.
-│  config.py
-│  run.py
-│  .env
-│  .gitignore
-│
-│  
-└─app
-　  │  forms.py
-　  │  models.py
-　  │  scheduler.py
-　  │  utils.py
-　  │  __init__.py
-　  │  
-　  ├─auth
-　  │  │  routes.py
-　  │  │  __init__.py
-　  │  │  
-　  │  └─templates
-　  │  　  └─auth
-　  │  　          forgot_password.html
-　  │  　          login.html
-　  │  　          register.html
-　  │  　          reset_password.html
-　  │          
-　  └─noodle
-　  　  │  routes.py
-　  　  │  __init__.py
-　  　  │  
-　  　  └─templates
+C:. <br>
+│  config.py <br>
+│  run.py <br>
+│  .env <br>
+│  .gitignore <br>
+│ <br>
+│ <br>
+└─app <br>
+　  │  forms.py <br>
+　  │  models.py <br>
+　  │  scheduler.py <br>
+　  │  utils.py <br>
+　  │  __init__.py <br>
+　  │ <br>
+　  ├─auth <br>
+　  │  │  routes.py <br>
+　  │  │  __init__.py <br>
+　  │  │ <br>
+　  │  └─templates <br>
+　  │  　  └─auth <br>
+　  │  　          forgot_password.html <br>
+　  │  　          login.html <br>
+　  │  　          register.html <br>
+　  │  　          reset_password.html <br>
+　  │ <br>
+　  └─noodle <br>
+　  　  │  routes.py <br>
+　  　  │  __init__.py <br>
+　  　  │ <br>
+　  　  └─templates <br>
 　  　  　  └─noodle
 　  　  　          base.html
