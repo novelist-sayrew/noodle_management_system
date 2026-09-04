@@ -88,7 +88,7 @@
 
 # 6.ファイル構造<br>
 ```
-*noodle_management_system*
+noodle_management_system
 │
 │
 │
