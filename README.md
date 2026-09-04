@@ -83,41 +83,41 @@
 
 # 6.ファイル構造<br>
 ```
-*noodle_management_system* <br>
-│ <br>
-│ <br>
-│ <br>
-├──app <br>
-│    ├──  forms.py <br>
-│    ├──  models.py <br>
-│    ├──  scheduler.py <br>
-│    ├──  utils.py <br>
-│    ├──  __init__.py <br>
-│    │ <br>
-│    ├──  auth <br>
-│    │    ├──  routes.py <br>
-│    │    ├──  __init__.py <br>
-│    │    │ <br>
-│    │    └─  templates <br>
-│    │  　     └─  auth <br>
-│    │  　         ├──  forgot_password.html <br>
-│    │  　         ├──  login.html <br>
-│    │  　         ├──  register.html <br>
-│    │  　         └──  reset_password.html <br>
-│    │ <br>
-│    └───  noodle <br>
-│         ├──  routes.py <br>
-│         ├──  __init__.py <br>
-│         │ <br>
-│         └─  templates <br>
-│       　     └─  noodle <br>
-│       　         ├──  base.html <br>
-│       　         ├──  form.html <br>
-│       　         ├──  list.html <br>
-│       　         └──  warning.html <br>
-│ <br>
-├──  config.py <br>
-├──  run.py <br>
-├──  .env <br>
-└──  .gitignore <br>
+*noodle_management_system*
+│
+│
+│
+├──app
+│    ├──  forms.py
+│    ├──  models.py
+│    ├──  scheduler.py
+│    ├──  utils.py
+│    ├──  __init__.py
+│    │
+│    ├──  auth
+│    │    ├──  routes.py
+│    │    ├──  __init__.py
+│    │    │
+│    │    └─  templates
+│    │  　     └─  auth
+│    │  　         ├──  forgot_password.html
+│    │  　         ├──  login.html
+│    │  　         ├──  register.html
+│    │  　         └──  reset_password.html
+│    │
+│    └───  noodle
+│         ├──  routes.py
+│         ├──  __init__.py
+│         │
+│         └─  templates
+│       　     └─  noodle
+│       　         ├──  base.html
+│       　         ├──  form.html
+│       　         ├──  list.html
+│       　         └──  warning.html
+│
+├──  config.py
+├──  run.py
+├──  .env
+└──  .gitignore
 ```
