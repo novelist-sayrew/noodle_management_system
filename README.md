@@ -88,36 +88,36 @@
 │
 │
 ├──app
-│    ├──  forms.py
-│    ├──  models.py
-│    ├──  scheduler.py
-│    ├──  utils.py
-│    ├──  __init__.py
+│    ├── forms.py
+│    ├── models.py
+│    ├── scheduler.py
+│    ├── utils.py
+│    ├── __init__.py
 │    │
-│    ├──  auth
-│    │    ├──  routes.py
-│    │    ├──  __init__.py
+│    ├──auth
+│    │    ├── routes.py
+│    │    ├── __init__.py
 │    │    │
-│    │    └─  templates
-│    │  　     └─  auth
-│    │  　         ├──  forgot_password.html
-│    │  　         ├──  login.html
-│    │  　         ├──  register.html
-│    │  　         └──  reset_password.html
+│    │    └─templates
+│    │  　     └─auth
+│    │  　         ├── forgot_password.html
+│    │  　         ├── login.html
+│    │  　         ├── register.html
+│    │  　         └── reset_password.html
 │    │
-│    └───  noodle
-│         ├──  routes.py
-│         ├──  __init__.py
+│    └───noodle
+│         ├── routes.py
+│         ├── __init__.py
 │         │
-│         └─  templates
-│       　     └─  noodle
-│       　         ├──  base.html
-│       　         ├──  form.html
-│       　         ├──  list.html
-│       　         └──  warning.html
+│         └─templates
+│       　     └─noodle
+│       　         ├── base.html
+│       　         ├── form.html
+│       　         ├── list.html
+│       　         └── warning.html
 │
-├──  config.py
-├──  run.py
-├──  .env
-└──  .gitignore
+├── config.py
+├── run.py
+├── .env
+└── .gitignore
 ```
