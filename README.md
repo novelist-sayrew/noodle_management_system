@@ -82,7 +82,7 @@
 <hr>
 
 # 6.ファイル構造<br>
-C:. <br>
+*noodle_management_system* <br>
 │  config.py <br>
 │  run.py <br>
 │  .env <br>
@@ -112,5 +112,9 @@ C:. <br>
 　  　  │  __init__.py <br>
 　  　  │ <br>
 　  　  └─templates <br>
-　  　  　  └─noodle
-　  　  　          base.html
+　  　  　  └─noodle <br>
+　  　  　          base.html <br>
+　  　  　          form.html <br>
+　  　  　          list.html <br>
+　  　  　          warning.html <br>
+
