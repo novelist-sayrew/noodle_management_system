@@ -82,3 +82,35 @@
 <hr>
 
 6.ファイル構造
+C:.
+│  config.py
+│  run.py
+│  .env
+│  .gitignore
+│
+│  
+└─app
+　  │  forms.py
+　  │  models.py
+　  │  scheduler.py
+　  │  utils.py
+　  │  __init__.py
+　  │  
+　  ├─auth
+　  │  │  routes.py
+　  │  │  __init__.py
+　  │  │  
+　  │  └─templates
+　  │  　  └─auth
+　  │  　          forgot_password.html
+　  │  　          login.html
+　  │  　          register.html
+　  │  　          reset_password.html
+　  │          
+　  └─noodle
+　  　  │  routes.py
+　  　  │  __init__.py
+　  　  │  
+　  　  └─templates
+　  　  　  └─noodle
+　  　  　          base.html
