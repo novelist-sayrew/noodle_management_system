@@ -110,12 +110,12 @@
 │         ├──  __init__.py <br>
 │         │ <br>
 │         └─  templates <br>
-│       　     └─noodle <br>
-│　  　  　          base.html <br>
-│　  　  　          form.html <br>
-│　  　  　          list.html <br>
-│　  　  　          warning.html <br>
-│
+│       　     └─  noodle <br>
+│       　         ├──  base.html <br>
+│       　         ├──  form.html <br>
+│       　         ├──  list.html <br>
+│       　         └──  warning.html <br>
+│ <br>
 ├──  config.py <br>
 ├──  run.py <br>
 ├──  .env <br>
