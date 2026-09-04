@@ -83,19 +83,16 @@
 
 # 6.ファイル構造<br>
 *noodle_management_system* <br>
-│  config.py <br>
-│  run.py <br>
-│  .env <br>
-│  .gitignore <br>
 │ <br>
 │ <br>
-└─app <br>
-　  │  forms.py <br>
-　  │  models.py <br>
-　  │  scheduler.py <br>
-　  │  utils.py <br>
-　  │  __init__.py <br>
-　  │ <br>
+│ <br>
+├───app <br>
+　  ├───  forms.py <br>
+　  ├───  models.py <br>
+　  ├───  scheduler.py <br>
+　  ├───  utils.py <br>
+　  ├───  __init__.py <br>
+　  ├─── <br>
 　  ├─auth <br>
 　  │  │  routes.py <br>
 　  │  │  __init__.py <br>
@@ -117,4 +114,9 @@
 　  　  　          form.html <br>
 　  　  　          list.html <br>
 　  　  　          warning.html <br>
+
+├──  config.py <br>
+├──  run.py <br>
+├──  .env <br>
+└──  .gitignore <br>
 
