@@ -82,6 +82,7 @@
 <hr>
 
 # 6.ファイル構造<br>
+```
 *noodle_management_system* <br>
 │ <br>
 │ <br>
@@ -119,4 +120,4 @@
 ├──  run.py <br>
 ├──  .env <br>
 └──  .gitignore <br>
-
+```
