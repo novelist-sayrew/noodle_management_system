@@ -86,13 +86,13 @@
 │ <br>
 │ <br>
 │ <br>
-├───app <br>
-│ 　  ├───  forms.py <br>
-│ 　  ├───  models.py <br>
-│ 　  ├───  scheduler.py <br>
-│ 　  ├───  utils.py <br>
-│ 　  ├───  __init__.py <br>
-│ 　  ├─── <br>
+├──app <br>
+│ 　  ├──  forms.py <br>
+│ 　  ├──  models.py <br>
+│ 　  ├──  scheduler.py <br>
+│ 　  ├──  utils.py <br>
+│ 　  ├──  __init__.py <br>
+│ 　  │ <br>
 　  ├─auth <br>
 　  │  │  routes.py <br>
 　  │  │  __init__.py <br>
