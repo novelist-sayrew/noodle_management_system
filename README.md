@@ -163,8 +163,20 @@ noodle_management_system
 <hr>
 
 ### 2.clone(コードを複製・コピーすること)の手順<br>
-1.アプリをcloneする<br>
-&nbsp; Ubuntuのターミナルに git clone https://github.com/novelist-sayrew/noodle_management_system を入力し、アプリをcloneする。<br>
+1.Ubuntuのターミナルに「git clone https://github.com/novelist-sayrew/noodle_management_system」を入力し、アプリをcloneする。<br>
+2.<br>
+3.<br>
+4.<br>
+5.<br>
+6.<br>
+7.<br>
+8.<br>
+
+
+
+
+<hr>
+
 
 
 
