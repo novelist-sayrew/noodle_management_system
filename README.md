@@ -209,12 +209,19 @@ D.MAIL_PASSWORD<br>
 ・yahoo!メール …… ログイン時に設定したパスワード。 <br>
 ・Outlook(Microsoft) …… ログイン時に設定したパスワード。<br> 
 ・iCloud(Apple) …… abcd-efgh-ijkl-mn-op などの、ハイフンが入った4桁の英字×4組の16字。<br>
-など。(メールアプリごとに仕様が異なります。)
+など。(メールアプリごとに仕様が異なります)<br>
 
-【例】MAIL_PASSWORD = abcd efgh ijkl mnop
+【例】MAIL_PASSWORD = abcd efgh ijkl mnop<br>
 
 
-E.
+E.DATABASE_URL <br>
+&nbsp; 使用するデータベースのURLを設定します。<br>
+&nbsp; 本アプリではSQLiteを推奨しています。<br>
+
+DATABASE_URL = sqlite:///example.db<br>
+
+
+
 
 &nbsp; 5.<br>
 &nbsp; 6.Ubuntuのターミナルに「pip install -r requirements.txt」を入力し、アプリを起動するために必要なガジェットをインストールする。<br>
