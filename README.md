@@ -176,11 +176,26 @@ noodle_management_system
 &nbsp; 本アプリを動かすためには、.envファイルの作成が必要不可欠となっております。
 &nbsp; .envという名前のファイルをrun.pyやconfig.pyなどのファイルと同じ階層に作成し、下記の項目を作成してください。
 
-SECRET_KEY = <br>
-MAIL_USERNAME = <br>
-MAIL_DEFAULT_SENDER = <br>
-MAIL_PASSWORD = <br>
-DATABASE_URL = <br>
+SECRET_KEY = A<br>
+MAIL_USERNAME = B<br>
+MAIL_DEFAULT_SENDER = C<br>
+MAIL_PASSWORD = D<br>
+DATABASE_URL = E<br>
+
+A.<br>
+&nbsp; Flaskがセッションを保護するために必要となる秘密鍵を設定します。
+&nbsp; Ubuntuに python -c "import secrets; print(secrets.token_hex(32))" と入力すると、
+
+
+
+ランダムで作成した64桁の英数字を入力してください。<br>
+
+B.<br>
+&nbsp; アプリを使用する際に利用するメールアドレスを入力します。
+
+C.
+D.
+E.
 
 &nbsp; 5.<br>
 &nbsp; 6.Ubuntuのターミナルに「pip install -r requirements.txt」を入力し、アプリを起動するために必要なガジェットをインストールする。<br>
