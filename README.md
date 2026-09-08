@@ -163,7 +163,7 @@ noodle_management_system
 <hr>
 
 ### 2.clone(コードを複製・コピーすること)の手順<br>
-&nbsp; 1.Ubuntuのターミナルに「git clone `https://github.com/novelist-sayrew/noodle_management_system`」を入力し、アプリをcloneする。<br>
+&nbsp; 1.Ubuntuのターミナルに「git clone <https://github.com/novelist-sayrew/noodle_management_system>」を入力し、アプリをcloneする。<br>
 &nbsp; 2.Ubuntuのターミナルに「cd ~/workspace/noodle_management_system」を入力し、カレントディレクトリをアプリのフォルダにする。<br>
 &nbsp; 3.Ubuntuのターミナルに「python3 -m venv venv」を入力し、新しい仮想環境を作成する。<br>
 &nbsp; 4.Ubuntuのターミナルに「source venv/bin/activate」を入力し、仮想環境を有効化する。<br>
