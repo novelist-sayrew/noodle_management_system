@@ -202,10 +202,16 @@ C.MAIL_DEFAULT_SENDER<br>
 【例】MAIL_DEFAULT_SENDER = example@gmail.com<br>
 
 
-D.MAIL_PASSWORD
+D.MAIL_PASSWORD<br>
+&nbsp; メールアプリを利用するために使用するパスワードを設定します。<br>
 
+・Gmail(Google) …… abcd efgh ijkl mnop などの、4桁の英字×4組の16字。<br>
+・yahoo!メール …… ログイン時に設定したパスワード。 <br>
+・Outlook(Microsoft) …… ログイン時に設定したパスワード。<br> 
+・iCloud(Apple) …… abcd-efgh-ijkl-mn-op などの、ハイフンが入った4桁の英字×4組の16字。<br>
+など。(メールアプリごとに仕様が異なります。)
 
-
+【例】MAIL_PASSWORD = abcd efgh ijkl mnop
 
 
 E.
