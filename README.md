@@ -156,19 +156,29 @@ noodle_management_system
 <hr>
 
 # 8.閲覧者がアプリを起動できるようにするためのセットアップ
-### 1.推奨環境<br>
+### 推奨環境<br>
 ・Python3.10～3.12<br>
 ・Ubuntu(Linax)(Windowsユーザーの場合は、こちらのインストールをおすすめします)
 ・Gitのホームページ(本アプリのコードをコピーしたい場合、ログインが必要となります)<br>
 <hr>
 
-### 2.clone(コードを複製・コピーすること)の手順<br>
-&nbsp; 1.Ubuntuのターミナルに「git clone https://github.com/novelist-sayrew/noodle_management_system」 を入力し、アプリをcloneする。<br>
-&nbsp; 2.Ubuntuのターミナルに「cd ~/workspace/noodle_management_system」を入力し、カレントディレクトリをアプリのフォルダにする。<br>
-&nbsp; 3.Ubuntuのターミナルに「python3 -m venv venv」を入力し、新しい仮想環境を作成する。<br>
-&nbsp; 4.Ubuntuのターミナルに「source venv/bin/activate」を入力し、仮想環境を有効化する。<br>
-&nbsp; 5.Ubuntuのターミナルに「pip install -r requirements.txt」を入力し、アプリを起動するために必要なガジェットをインストールする。<br>
-&nbsp; 6.Ubuntuのターミナルに「python run.py」を入力し、アプリを起動する。<br>
+### 1.アプリをclone(コードを複製・コピーすること)する<br>
+&nbsp; Ubuntuのターミナルに「git clone https://github.com/novelist-sayrew/noodle_management_system」 を入力し、アプリをcloneする。<br>
+<hr>
+
+### 2.仮想環境を有効化する<br>
+&nbsp; 1.Ubuntuのターミナルに「cd ~/workspace/noodle_management_system」を入力し、カレントディレクトリをアプリのフォルダにする。<br>
+&nbsp; 2.Ubuntuのターミナルに「python3 -m venv venv」を入力し、新しい仮想環境を作成する。<br>
+&nbsp; 3.Ubuntuのターミナルに「source venv/bin/activate」を入力し、仮想環境を有効化する。<br>
+<hr>
+
+### 3.「.env」ファイルを作成する<br>
+
+
+
+&nbsp; 5.<br>
+&nbsp; 6.Ubuntuのターミナルに「pip install -r requirements.txt」を入力し、アプリを起動するために必要なガジェットをインストールする。<br>
+&nbsp; 7.Ubuntuのターミナルに「python run.py」を入力し、アプリを起動する。<br>
 <hr>
 
 
