@@ -158,13 +158,20 @@ noodle_management_system
 # 8.閲覧者がアプリを起動できるようにするためのセットアップ
 ### 1.推奨環境<br>
 ・Python3.10～3.12<br>
+・Ubuntu(Linax)(Windowsユーザーの場合は、こちらのインストールをおすすめします)
 ・Gitのホームページ(本アプリのコードをコピーしたい場合、ログインが必要となります)<br>
 <hr>
 
 ### 2.clone(コードを複製・コピーすること)の手順<br>
-1.https://github.com/novelist-sayrew/noodle_management_system を開く。<br>
-2.ページ上部にある「Code」と書かれた緑色のボタンを押す。<br>
-3.
+1.アプリをcloneする<br>
+&nbsp; Ubuntuのターミナルに git clone https://github.com/novelist-sayrew/noodle_management_system を入力し、アプリをcloneする。<br>
+
+
+
+
+
+
+
 
 
 
