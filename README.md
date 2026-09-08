@@ -182,19 +182,32 @@ MAIL_DEFAULT_SENDER = C<br>
 MAIL_PASSWORD = D<br>
 DATABASE_URL = E<br>
 
-A.<br>
-&nbsp; Flaskがセッションを保護するために必要となる秘密鍵を設定します。
-&nbsp; Ubuntuに python -c "import secrets; print(secrets.token_hex(32))" と入力すると、
+A.SECRET_KEY<br>
+&nbsp; Flaskがセッションを保護するために必要となる秘密鍵を設定します。<br>
+&nbsp; Ubuntuのターミナルに python -c "import secrets; print(secrets.token_hex(32))" と入力すると、英数字が混ざった64桁の文字列が出力されるため、そちらを入力してください。<br>
+
+【例】SECRET_KEY = 92f3a8c4e1b9d0f7c2a1e4b8f9d3c7a2e1f0b9c4d7a8e3f1c2b4d6e8f0a1b3<br>
+※実際にアプリで使っているものではありません。<br>
+
+
+B.MAIL_USERNAME<br>
+&nbsp; アプリを使用する際に利用するメールアドレスを設定します。<br>
+
+【例】MAIL_USERNAME = example@gmail.com<br>
+
+
+C.MAIL_DEFAULT_SENDER<br>
+&nbsp; パスワード再設定メールを送る送信元となるメールアドレスを設定します。MAIL_USERNAMEに設定したメールアドレスと同じでも問題ありません。<br>
+
+【例】MAIL_DEFAULT_SENDER = example@gmail.com<br>
+
+
+D.MAIL_PASSWORD
 
 
 
-ランダムで作成した64桁の英数字を入力してください。<br>
 
-B.<br>
-&nbsp; アプリを使用する際に利用するメールアドレスを入力します。
 
-C.
-D.
 E.
 
 &nbsp; 5.<br>
