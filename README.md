@@ -176,13 +176,11 @@ noodle_management_system
 &nbsp; 本アプリを動かすためには、.envファイルの作成が必要不可欠となっております。
 &nbsp; .envという名前のファイルをrun.pyやconfig.pyなどのファイルと同じ階層に作成し、下記の項目を作成してください。
 
-`
 SECRET_KEY = <br>
 MAIL_USERNAME = <br>
 MAIL_DEFAULT_SENDER = <br>
 MAIL_PASSWORD = <br>
 DATABASE_URL = <br>
-`
 
 &nbsp; 5.<br>
 &nbsp; 6.Ubuntuのターミナルに「pip install -r requirements.txt」を入力し、アプリを起動するために必要なガジェットをインストールする。<br>
