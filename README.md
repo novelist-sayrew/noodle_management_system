@@ -177,11 +177,11 @@ noodle_management_system
 &nbsp; .envという名前のファイルをrun.pyやconfig.pyなどのファイルと同じ階層に作成し、下記の項目を作成してください。
 
 `
-SECRET_KEY = 
-MAIL_USERNAME = 
-MAIL_DEFAULT_SENDER = 
-MAIL_PASSWORD = 
-DATABASE_URL =
+SECRET_KEY = <br>
+MAIL_USERNAME = <br>
+MAIL_DEFAULT_SENDER = <br>
+MAIL_PASSWORD = <br>
+DATABASE_URL = <br>
 `
 
 &nbsp; 5.<br>
