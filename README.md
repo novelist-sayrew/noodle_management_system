@@ -162,7 +162,9 @@ noodle_management_system
 <hr>
 
 ### 2.clone(コードを複製・コピーすること)の手順<br>
-
+1.https://github.com/novelist-sayrew/noodle_management_system を開く。<br>
+2.ページ上部にある「Code」と書かれた緑色のボタンを押す。<br>
+3.
 
 
 
