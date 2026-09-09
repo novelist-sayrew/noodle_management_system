@@ -156,7 +156,7 @@ noodle_management_system
 <hr>
 
 # 8.閲覧者がアプリを起動できるようにするためのセットアップ<br>
-&nbsp; 以下の順番に操作を行い、アプリを起動してください。<br>
+&nbsp; 以下の1～6の手順に従い、アプリを起動してください。<br>
 <hr>
 
 ### 推奨環境<br>
@@ -238,6 +238,8 @@ DATABASE_URL = E<br>
 
 ### 6.アプリの起動
 &nbsp; 7.Ubuntuのターミナルに「python run.py」を入力し、アプリを起動する。<br>
+<br>
+<div style=text-align: right;>以上</div>
 <hr>
 
 
