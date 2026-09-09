@@ -227,10 +227,11 @@ DATABASE_URL = E<br>
 &nbsp; requirements.txtは、アプリを動かすために必要な様々な機能を一括でインストールすることができるテキストファイルです。<br>
 <hr>
 
-
-
-### 5.データベースの初期化・実装
-
+### 5.データベースの初期化・実装<br>
+&nbsp; 1.Ubuntuのターミナルに「flask db init」を入力する。<br>
+&nbsp; 2.Ubuntuのターミナルに「flask db migrate -m "Initial migration"」を入力する。<br>
+&nbsp; 3.Ubuntuのターミナルに「flask db upgrate」を入力する。<br>
+<hr>
 
 ### 6.アプリの起動
 &nbsp; 7.Ubuntuのターミナルに「python run.py」を入力し、アプリを起動する。<br>
