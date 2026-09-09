@@ -239,7 +239,9 @@ DATABASE_URL = E<br>
 ### 6.アプリの起動
 &nbsp; 7.Ubuntuのターミナルに「python run.py」を入力し、アプリを起動する。<br>
 <br>
-<div style="text-align: right;">以上</div>
+<div style="text-align: right;">
+ 以上
+</div>
 <hr>
 
 
