@@ -183,7 +183,7 @@ MAIL_PASSWORD = D<br>
 DATABASE_URL = E<br>
 <hr>
 
-#### A.---SECRET_KEY<br>
+#### 3-A.---SECRET_KEY<br>
 &nbsp; Flaskがセッションを保護するために必要となる秘密鍵を設定します。<br>
 &nbsp; Ubuntuのターミナルに python -c "import secrets; print(secrets.token_hex(32))" と入力すると、ランダムな英数字が混ざった64桁の文字列が出力されるため、そちらを入力してください。<br>
 
@@ -191,19 +191,19 @@ DATABASE_URL = E<br>
 ※実際にアプリで使っているものではありません。<br>
 <hr>
 
-#### B.---MAIL_USERNAME<br>
+#### 3-B.---MAIL_USERNAME<br>
 &nbsp; アプリを使用する際に利用するメールアドレスを設定します。<br>
 
 【例】MAIL_USERNAME = example@gmail.com<br>
 <hr>
 
-#### C.---MAIL_DEFAULT_SENDER<br>
+#### 3-C.---MAIL_DEFAULT_SENDER<br>
 &nbsp; パスワード再設定メールを送る送信元となるメールアドレスを設定します。MAIL_USERNAMEに設定したメールアドレスと同じでも問題ありません。<br>
 
 【例】MAIL_DEFAULT_SENDER = example@gmail.com<br>
 <hr>
 
-#### D.---MAIL_PASSWORD<br>
+#### 3-D.---MAIL_PASSWORD<br>
 &nbsp; メールアプリを利用するために使用するパスワードを設定します。<br>
 
 ・Gmail(Google) …… abcd efgh ijkl mnop などの、4桁の英字×4組の16字。<br>
@@ -215,7 +215,7 @@ DATABASE_URL = E<br>
 【例】MAIL_PASSWORD = abcd efgh ijkl mnop<br>
 <hr>
 
-#### E.---DATABASE_URL <br>
+#### 3-E.---DATABASE_URL <br>
 &nbsp; 使用するデータベースのURLを設定します。<br>
 &nbsp; 本アプリではSQLiteを推奨しています。<br>
 
