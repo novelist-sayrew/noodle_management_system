@@ -237,23 +237,9 @@ DATABASE_URL = E<br>
 <hr>
 
 ### 6.アプリの起動
-&nbsp; 7.Ubuntuのターミナルに「python run.py」を入力し、アプリを起動する。<br>
+&nbsp; Ubuntuのターミナルに「python run.py」を入力し、アプリを起動する。<br>
 <br>
-<div style="text-align: right;">
- 以上
-</div>
-<hr>
-
-
-
-
-
-
-
-
-
-
-
+<P align="right">以上</P>
 <hr>
 
 # 9.デプロイ(試作品)が掲載されたサイトのURL
