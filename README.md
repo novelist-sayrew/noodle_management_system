@@ -219,13 +219,20 @@ DATABASE_URL = E<br>
 &nbsp; 使用するデータベースのURLを設定します。<br>
 &nbsp; 本アプリではSQLiteを推奨しています。<br>
 
-DATABASE_URL = sqlite:///example.db<br>
+【例】DATABASE_URL = sqlite:///example.db<br>
+<hr>
+
+### 4.アプリを起動するために必要な機能(モジュール)をインストールする<br>
+&nbsp; Ubuntuのターミナルに「pip install -r requirements.txt」を入力し、アプリを起動するために必要なモジュールをインストールする。<br>
+&nbsp; requirements.txtは、アプリを動かすために必要な様々な機能を一括でインストールすることができるテキストファイルです。<br>
 <hr>
 
 
 
-&nbsp; 5.<br>
-&nbsp; 6.Ubuntuのターミナルに「pip install -r requirements.txt」を入力し、アプリを起動するために必要なガジェットをインストールする。<br>
+### 5.データベースの初期化・実装
+
+
+### 6.アプリの起動
 &nbsp; 7.Ubuntuのターミナルに「python run.py」を入力し、アプリを起動する。<br>
 <hr>
 
