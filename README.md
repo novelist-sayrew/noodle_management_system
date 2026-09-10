@@ -122,6 +122,8 @@ noodle_management_system
 │       　         ├── list.html
 │       　         └── warning.html
 │
+├── Procfile
+├── requirements.txt
 ├── config.py
 ├── run.py
 ├── .env
