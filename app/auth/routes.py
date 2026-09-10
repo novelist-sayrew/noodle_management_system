@@ -33,7 +33,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.check_password(form.password.data):
             login_user(user,remember=form.remember_me.data)
-            next_page = request.args.get("next") or url_for("todo.index")
+            next_page = request.args.get("next") or url_for("noodle.index")
             return redirect(next_page)
         flash("ユーザー名またはパスワードが違います。")
     return render_template("auth/login.html",form=form)

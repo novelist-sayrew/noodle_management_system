@@ -1,23 +1,23 @@
-{% extends "todo/base.html" %}
+{% extends "noodle/base.html" %}
 
 {% block title %} - 商品名一覧 {% endblock %}
 
 {% block css %}
 <style>
-.todo-item{
+.noodle-item{
     display: flex;
     flex-direction: column;
     gap: 6px;
     margin-bottom: 20px;
 }
 
-.todo-row-top{
+.noodle-row-top{
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.todo-row-bottom{
+.noodle-row-bottom{
     display: flex;
     gap: 10px;
 }
@@ -46,7 +46,7 @@
 {% if expired_items %}
     <ul>
         {% for item in expired_items %}
-            <li class="timeout-food">{{item.title}}</li>
+            <li class="timeout-food">{{item.name}}</li>
         {% endfor %}
     </ul>
 {% else %}
@@ -55,39 +55,39 @@
 
 <hr>
 <h3>賞味期限が5日以内の商品</h3>
-<ul>一覧ページは、<a href="{{url_for('todo.warning')}}">こちら</a></ul>
+<ul>一覧ページは、<a href="{{url_for('noodle.warning')}}">こちら</a></ul>
 
 <hr>
 <h3>商品データ一覧</h3>
 <ul>
-{% for todo in todos %}
-    <li class="todo-item">
-        <div class="todo-row-top">
-            <span class="todo-marker">-----</span>
+{% for noodle in noodles %}
+    <li class="noodle-item">
+        <div class="noodle-row-top">
+            <span class="noodle-marker">-----</span>
         </div>
 
-        <div class="todo-row-middle">
-            <span class="todo-expiry">賞味期限:{{todo.expiry_date.strftime("%Y-%m-%d")}}</span>
+        <div class="noodle-row-middle">
+            <span class="noodle-expiry">賞味期限:{{noodle.expiry_date.strftime("%Y-%m-%d")}}</span>
         </div>
 
-        <div class="todo-row-middle2">
-            <span class="todo-title">商品名:{{todo.title}}</span>
+        <div class="noodle-row-middle2">
+            <span class="noodle-name">商品名:{{noodle.name}}</span>
         </div>
 
-        <div class="todo-row-middle3">
-            {% if todo.remaining_days<0 %}
+        <div class="noodle-row-middle3">
+            {% if noodle.remaining_days<0 %}
                 <span class="timeout-food">(賞味期限が切れました)</span>
-                {% elif todo.remaining_days <= 5 %}
-                    <span class="safe-food">(期限切れまで、あと{{todo.remaining_days}}日)</span>
+                {% elif noodle.remaining_days <= 5 %}
+                    <span class="safe-food">(期限切れまで、あと{{noodle.remaining_days}}日)</span>
             {% else %}
-                <span class="todo-remaining_days">(期限切れまで、あと{{todo.remaining_days}}日)</span>
+                <span class="noodle-remaining_days">(期限切れまで、あと{{noodle.remaining_days}}日)</span>
             {% endif %}
         </div>
 
-        <div class="todo-row-bottom">
-            [<a href="{{url_for('todo.edit',id=todo.id)}}">編集</a>]
+        <div class="noodle-row-bottom">
+            [<a href="{{url_for('noodle.edit',id=noodle.id)}}">編集</a>]
 
-            <form method="post" action="{{url_for('todo.delete',id=todo.id)}}">
+            <form method="post" action="{{url_for('noodle.delete',id=noodle.id)}}">
                 <button class="delete-button" type="submit" onclick="return confirmDelete();">削除</button>
             </form>
         </div>

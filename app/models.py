@@ -1,4 +1,4 @@
-from app import db,login
+from . import db,login
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime,timedelta,timezone
@@ -19,10 +19,10 @@ class User(UserMixin,db.Model):
 def load_user(user_id):
     return db.session.get(User,int(user_id)) #セッションからuser_idを呼び出し、それを元に、再ログインされた時にログイン情報を復元する。
 
-class Todo(db.Model):
+class Noodle(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     expiry_date = db.Column(db.Date)
-    title = db.Column(db.String(120))
+    name = db.Column(db.String(120))
 
 class PasswordResetToken(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -30,3 +30,18 @@ class PasswordResetToken(db.Model):
     token = db.Column(db.String(255),unique=True,nullable=False)
     expires_at = db.Column(db.DateTime,nullable=False)
     used = db.Column(db.Boolean,default=False)
+
+    @staticmethod
+    def cleanup_expired():
+        now = datetime.now(timezone.utc)
+        expired_tokens = PasswordResetToken.query.filter(
+            PasswordResetToken.expires_at < now
+        ).all()
+
+        count = len(expired_tokens)
+
+        for token in expired_tokens:
+            db.session.delete(token)
+
+        db.session.commit()
+        return count

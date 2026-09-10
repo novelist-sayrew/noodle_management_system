@@ -15,8 +15,8 @@
     <nav>
         {% if current_user.is_authenticated %}
             {{current_user.username}}さん|
-            <a href="{{url_for('todo.index')}}">商品名一覧</a>|
-            <a href="{{url_for('todo.add')}}">新規追加</a>|
+            <a href="{{url_for('noodle.index')}}">商品名一覧</a>|
+            <a href="{{url_for('noodle.add')}}">新規追加</a>|
             <a href="{{url_for('auth.logout')}}">ログアウト</a>
         {% else %}
             <a href="{{url_for('auth.login')}}">ログイン</a>|

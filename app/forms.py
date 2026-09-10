@@ -32,11 +32,11 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField("ログイン状態を保持する")
     submit = SubmitField("ログイン")
 
-class TodoForm(FlaskForm):
+class NoodleForm(FlaskForm):
     expiry_date = DateField("賞味期限",format="%Y-%m-%d",validators=[
         DataRequired()
     ])
-    title = StringField("商品名",validators=[
+    name = StringField("商品名",validators=[
         DataRequired(),
         Length(max=120)
     ])

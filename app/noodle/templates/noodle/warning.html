@@ -1,4 +1,4 @@
-{% extends "todo/base.html" %}
+{% extends "noodle/base.html" %}
 
 {% block title %} - 5日以内の商品一覧   {% endblock %}
 
@@ -25,10 +25,10 @@
         {% for item in warning_items %}
             <li>
                 賞味期限:{{item.expiry_date}}<br>
-                商品名:{{item.title}}<br>
+                商品名:{{item.name}}<br>
                 (期限切れまで、あと{{item.remaining_days}}日)<br>
-                [<a href="{{url_for('todo.edit',id=item.id)}}">編集</a>]
-                <form action="{{url_for('todo.delete',id=item.id)}}" method="post" style="display: inline;">
+                [<a href="{{url_for('noodle.edit',id=item.id)}}">編集</a>]
+                <form action="{{url_for('noodle.delete',id=item.id)}}" method="post" style="display: inline;">
                     <button class="delete-button" type="submit" onclick="return confirmDelete();">削除</button>
                 </form>
             </li>
