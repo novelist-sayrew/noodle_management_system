@@ -58,7 +58,6 @@
 ### ●環境管理・設定
 ・Python-dotenv<br>
 ・config.py<br>
-・SECRET_KEY<br>
 <hr>
 
 ### ●その他の構造・設計
