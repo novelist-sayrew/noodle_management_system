@@ -29,28 +29,28 @@
 ・期限が近い商品の専用ページによる表示<br>
 
 ## 4.使用した技術一覧
-### ●言語・フレームワーク
+### 言語・フレームワーク
 ・Python 3.x<br>
 ・Flask<br>
 
-### ●ライブラリ・拡張機能
+### ライブラリ・拡張機能
 ・Flask-Login<br>
 ・Flask-WTF<br>
 ・Jinja2<br>
 ・Werkzeug<br>
 
-### ●データベース・ORM
+### データベース・ORM
 ・SQLite<br>
 ・SQLAlchemy ORM<br>
 
-### ●バックグランド処理
+### バックグランド処理
 ・APScheduler<br>
 
-### ●環境管理・設定
+### 環境管理・設定
 ・Python-dotenv<br>
 ・config.py<br>
 
-### ●その他の構造・設計
+### その他の構造・設計
 ・Blueprint<br>
 ・create_app方式によるアプリの起動<br>
 ・アプリケーションコンテキスト<br>
