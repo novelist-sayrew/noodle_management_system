@@ -117,22 +117,21 @@ noodle_management_system
 <hr>
 
 # 8.閲覧者がアプリを起動できるようにするためのセットアップ<br>
-&nbsp; 以下の1～6の手順に従い、アプリを起動してください。<br>
 <hr>
 
 ### 推奨環境<br>
 ・Python3.10～3.12<br>
-・Ubuntu(Linax)
+・Ubuntu(Linax)<br>
 ・Gitのホームページ<br>
 <hr>
 
 ### 実装手順<br>
-1.リポジトリをcloneする。
-2.仮想環境を作成し、有効化する。
-3. .envファイルを作成し、SECRET_KEY・DATABASE_URLなどを設定。
-4.必要なパッケージのインストール。
-5.DBの初期化。
-6.アプリを起動する。
+1.リポジトリをcloneする。<br>
+2.仮想環境を作成し、有効化する。<br>
+3. .envファイルを作成し、SECRET_KEY・DATABASE_URLなどを設定。<br>
+4.必要なパッケージのインストール。<br>
+5.DBの初期化。<br>
+6.アプリを起動する。<br>
 <hr>
 
 # 9.デプロイ(試作品)が掲載されたサイトのURL
