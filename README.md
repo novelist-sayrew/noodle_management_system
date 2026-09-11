@@ -118,8 +118,7 @@ noodle_management_system
 # 8.閲覧者がアプリを起動できるようにするためのセットアップ<br>
 ### 推奨環境<br>
 ・Python3.10～3.12<br>
-・Ubuntu(Linax)<br>
-・Gitのホームページ<br>
+・Ubuntu(Linux)<br>
 <hr>
 
 ### 実装手順<br>
