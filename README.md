@@ -1,5 +1,5 @@
 # 1.アプリ名
-**noodle_management_system**
+# noodle_management_system
 <hr>
 
 # 2.概要
