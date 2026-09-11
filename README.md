@@ -122,85 +122,17 @@ noodle_management_system
 
 ### 推奨環境<br>
 ・Python3.10～3.12<br>
-・Ubuntu(Linax)(Windowsユーザーの場合は、こちらのインストールをおすすめします)
-・Gitのホームページ(本アプリのコードをコピーしたい場合、ログインが必要となります)<br>
+・Ubuntu(Linax)
+・Gitのホームページ<br>
 <hr>
 
-### 1.アプリをclone(コードを複製・コピーすること)する<br>
-&nbsp; Ubuntuのターミナルに「git clone https://github.com/novelist-sayrew/noodle_management_system」 を入力し、アプリをcloneする。<br>
-<hr>
-
-### 2.仮想環境を有効化する<br>
-&nbsp; 1.Ubuntuのターミナルに「cd ~/workspace/noodle_management_system」を入力し、カレントディレクトリをアプリのフォルダにする。<br>
-&nbsp; 2.Ubuntuのターミナルに「python3 -m venv venv」を入力し、新しい仮想環境を作成する。<br>
-&nbsp; 3.Ubuntuのターミナルに「source venv/bin/activate」を入力し、仮想環境を有効化する。<br>
-<hr>
-
-### 3.「.env」ファイルを作成する<br>
-&nbsp; 本アプリを動かすためには、.envファイルの作成が必要不可欠となっております。
-&nbsp; .envという名前のファイルをrun.pyやconfig.pyなどのファイルと同じ階層に作成し、下記の項目を作成してください。
-
-SECRET_KEY = A<br>
-MAIL_USERNAME = B<br>
-MAIL_DEFAULT_SENDER = C<br>
-MAIL_PASSWORD = D<br>
-DATABASE_URL = E<br>
-<hr>
-
-#### 3-A.---SECRET_KEY<br>
-&nbsp; Flaskがセッションを保護するために必要となる秘密鍵を設定します。<br>
-&nbsp; Ubuntuのターミナルに python -c "import secrets; print(secrets.token_hex(32))" と入力すると、ランダムな英数字が混ざった64桁の文字列が出力されるため、そちらを入力してください。<br>
-
-【例】SECRET_KEY = 92f3a8c4e1b9d0f7c2a1e4b8f9d3c7a2e1f0b9c4d7a8e3f1c2b4d6e8f0a1b3<br>
-※実際にアプリで使っているものではありません。<br>
-<hr>
-
-#### 3-B.---MAIL_USERNAME<br>
-&nbsp; アプリを使用する際に利用するメールアドレスを設定します。<br>
-
-【例】MAIL_USERNAME = example@gmail.com<br>
-<hr>
-
-#### 3-C.---MAIL_DEFAULT_SENDER<br>
-&nbsp; パスワード再設定メールを送る送信元となるメールアドレスを設定します。MAIL_USERNAMEに設定したメールアドレスと同じでも問題ありません。<br>
-
-【例】MAIL_DEFAULT_SENDER = example@gmail.com<br>
-<hr>
-
-#### 3-D.---MAIL_PASSWORD<br>
-&nbsp; メールアプリを利用するために使用するパスワードを設定します。<br>
-
-・Gmail(Google) …… abcd efgh ijkl mnop などの、4桁の英字×4組の16字。<br>
-・yahoo!メール …… ログイン時に設定したパスワード。 <br>
-・Outlook(Microsoft) …… ログイン時に設定したパスワード。<br> 
-・iCloud(Apple) …… abcd-efgh-ijkl-mn-op などの、ハイフンが入った4桁の英字×4組の16字。<br>
-など。(メールアプリごとに仕様が異なります)<br>
-
-【例】MAIL_PASSWORD = abcd efgh ijkl mnop<br>
-<hr>
-
-#### 3-E.---DATABASE_URL <br>
-&nbsp; 使用するデータベースのURLを設定します。<br>
-&nbsp; 本アプリではSQLiteを推奨しています。<br>
-
-【例】DATABASE_URL = sqlite:///example.db<br>
-<hr>
-
-### 4.アプリを起動するために必要な機能(モジュール)をインストールする<br>
-&nbsp; Ubuntuのターミナルに「pip install -r requirements.txt」を入力し、アプリを起動するために必要なモジュールをインストールする。<br>
-&nbsp; requirements.txtは、アプリを動かすために必要な様々な機能を一括でインストールすることができるテキストファイルです。<br>
-<hr>
-
-### 5.データベースの初期化・実装<br>
-&nbsp; 1.Ubuntuのターミナルに「flask db init」を入力する。<br>
-&nbsp; 2.Ubuntuのターミナルに「flask db migrate -m "Initial migration"」を入力する。<br>
-&nbsp; 3.Ubuntuのターミナルに「flask db upgrade」を入力する。<br>
-<hr>
-
-### 6.アプリの起動
-&nbsp; Ubuntuのターミナルに「python run.py」を入力し、アプリを起動する。<br>
-<br>
-<P align="right">以上</P>
+### 実装手順<br>
+1.リポジトリをcloneする。
+2.仮想環境を作成し、有効化する。
+3. .envファイルを作成し、SECRET_KEY・DATABASE_URLなどを設定。
+4.必要なパッケージのインストール。
+5.DBの初期化。
+6.アプリを起動する。
 <hr>
 
 # 9.デプロイ(試作品)が掲載されたサイトのURL
