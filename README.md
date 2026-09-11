@@ -93,8 +93,6 @@
 ```
 noodle_management_system
 │
-│
-│
 ├──app
 │    ├── forms.py
 │    ├── models.py
@@ -237,7 +235,7 @@ DATABASE_URL = E<br>
 ### 5.データベースの初期化・実装<br>
 &nbsp; 1.Ubuntuのターミナルに「flask db init」を入力する。<br>
 &nbsp; 2.Ubuntuのターミナルに「flask db migrate -m "Initial migration"」を入力する。<br>
-&nbsp; 3.Ubuntuのターミナルに「flask db upgrate」を入力する。<br>
+&nbsp; 3.Ubuntuのターミナルに「flask db upgrade」を入力する。<br>
 <hr>
 
 ### 6.アプリの起動
