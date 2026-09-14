@@ -73,7 +73,7 @@ def forgot_password():
     send_email(
         to_email=email,
         subject="パスワード再設定",
-        body=f"以下のURLにアクセスして、パスワードの再設定をしてください。\n{reset_url}\n有効期限は1時間です。"
+        body=f"以下のURLにアクセスして、パスワードの再設定をしてください。\n{reset_url}\n有効期限は30分です。"
     )
 
     flash("パスワード再設定用のURLをメールで送信しました。")
