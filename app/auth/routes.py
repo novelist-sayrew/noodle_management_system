@@ -57,7 +57,7 @@ def forgot_password():
         return redirect(url_for("auth.forgot_password"))
 
     token = secrets.token_urlsafe(32)
-    expires_at = datetime.now(timezone.utc) + timedelta(hours=1)
+    expires_at = datetime.now(timezone.utc) + timedelta(minutes=30)
 
     record = PasswordResetToken(
         email=email,
