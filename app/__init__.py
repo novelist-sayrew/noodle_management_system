@@ -29,16 +29,15 @@ def create_app():
     login.init_app(app)
 
     from app.models import User,PasswordResetToken
-    from app.scheduler import init_scheduler
-
-    init_scheduler(app)
 
     with app.app_context():
         from app.auth import bp as auth_bp
         from app.noodle import bp as noodle_bp
+        from app.scheduler import init_scheduler
 
         app.register_blueprint(auth_bp,url_prefix="/auth")
         app.register_blueprint(noodle_bp,url_prefix="/noodle")
+        init_scheduler(app)
 
         db.create_all()
 
