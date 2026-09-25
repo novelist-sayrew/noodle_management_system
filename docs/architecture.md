@@ -10,18 +10,18 @@ READMEで簡略化して記載した内容を、ここでは詳細に説明し�
 ```
 noodle_management_system
 │
-├── README
+├── README.md                               #アプリ概要説明書
 ├── docs
-│    └─── architecture.md
+│    └─── architecture.md                   #アプリ内部設計書(本ファイル)
 │
-├── app
-│    ├── forms.py
-│    ├── models.py
-│    ├── scheduler.py
-│    ├── utils.py
-│    ├── __init__.py
+├── app                                     #アプリシステム関連
+│    ├── forms.py                           #WTForm定義
+│    ├── models.py                          #ユーザー・商品のモデル定義
+│    ├── scheduler.py                       #APSchedulerの初期化・設定・ジョブ登録
+│    ├── utils.py                           #パスワード再設定メール送信
+│    ├── __init__.py                        #create_app()・拡張機能の初期化
 │    │
-│    ├── auth
+│    ├── auth                               #ユーザー認証機能関連
 │    │    ├── routes.py
 │    │    ├── __init__.py
 │    │    │
@@ -32,7 +32,7 @@ noodle_management_system
 │    │  　         ├── register.html
 │    │  　         └── reset_password.html
 │    │
-│    └─── noodle
+│    └─── noodle                            #商品関連機能
 │         ├── routes.py
 │         ├── __init__.py
 │         │
@@ -43,10 +43,10 @@ noodle_management_system
 │       　         ├── list.html
 │       　         └── warning.html
 │
-├── Procfile
+├── Procfile                                #本番環境(Gunicorn)起動設定    
 ├── requirements.txt
-├── config.py
-├── run.py
+├── config.py                               #Configクラス設定
+├── run.py                                  #ローカル起動用
 ├── scheduler_run.py
 ├── .env
 └── .gitignore
@@ -73,21 +73,18 @@ create_app() 内では以下の順序で初期化を行っています。<br>
 #### 5.  UserなどのDBモデルのインポート<br>
 SQLAlchemyにモデルを登録させることによって、ImportErrorや循環インポートを防ぐため。<br>
 
-#### ×6.  APSchedulerの初期化<br>
-create_app()内でのみ起動を行うことによって、グローバル環境下でscheduler.start()が実行されることによる、ジョブの二重起動を防ぐため。<br>
-
-#### 7.  アプリケーションコンテキストの作成<br>
+#### 6.  アプリケーションコンテキストの作成<br>
  Blueprintの登録にはcurrent_appなどの機能が、DBテーブルの作成にはcurrent_configなどの機能が必要であり、それらの機能を使えるようにするために、アプリケーションコンテキストの作成を行わなければならないため。<br>
 
-#### 8.  Blueprintの登録<br>
+#### 7.  Blueprintの登録<br>
 それぞれの役割や機能によってルーティングを行うため。<br>
 ・auth …… ユーザー情報の登録・認証など、ユーザーに関する機能。<br>
 ・noodle …… 商品情報の編集・削除、賞味期限の自動算出など、商品情報に関する機能。<br>
 
-#### 9.  DBのテーブルを作成<br>
+#### 8.  DBのテーブルを作成<br>
 Blueprintを先に登録することでルーティングやアプリ構造を明確化し、DBのテーブルを正しく生成できるようにするため。<br>
 
-#### 10. トップページのルートを定義<br>
+#### 9. トップページのルートを定義<br>
 <br>
 
 ## 4. Blueprintの構成
@@ -144,7 +141,7 @@ WSGIサーバーが複数のworkerプロセスを生成する都合上、cronに
 <br>
 
 ### 二重起動の防止
-WSGIサーバーの仕様により、グローバル環境下にscheduler.start()を置くと、親プロセス・子プロセスのそれぞれでscheduler.start()を読み込むことにより、ジョブが二重に起動してしまうため、APSchedulerの起動に関する機能をscheduler.pyに分離し、create_app()内でのみ初期化・起動が実行されるようにしました。<br>
+WSGIサーバーはworkerをforkするため、グローバル環境下にscheduler.start()を置くと、親プロセスとforkされた子プロセスのそれぞれがscheduler.start()を読み込むことにより、ジョブが二重に起動してしまうため、APSchedulerの起動に関する機能をscheduler.pyに分離し、create_app()内でのみ初期化・起動が実行されるようにしました。<br>
 <br>
 
 ## 8. アプリ全体のセキュリティ設計<br>
@@ -168,7 +165,7 @@ WSGIサーバーの仕様により、グローバル環境下にscheduler.start(
 <br>
 
 #### HTTPSによる通信の暗号化<br>
-　通信内容を暗号化することによる、中間者攻撃の防止<br>
+　TLS方式で通信内容(ログイン情報やトークンなど)を暗号化することによる、中間者攻撃の防止<br>
 <br>
 
 ## 9. 今後の展望・改善案<br>

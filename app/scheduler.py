@@ -21,5 +21,3 @@ def init_scheduler(app):
             replace_existing=True
         )
         scheduler.start()
-
-#　※本番環境……3600秒(1時間ごと)、テスト用……10秒ごと。

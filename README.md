@@ -59,18 +59,18 @@
 ```
 noodle_management_system
 │
-├── README
+├── README.md                                #アプリ概要説明書(本ファイル)
 ├── docs
-│    └─── architecture.md
+│    └─── architecture.md                    #アプリ内部設計書
 │
-├── app
+├── app                                      #アプリシステム関連
 │    ├── forms.py
 │    ├── models.py
-│    ├── scheduler.py
-│    ├── utils.py
-│    ├── __init__.py
+│    ├── scheduler.py                        #APSchesuler処理関連
+│    ├── utils.py                            #パスワード再設定メールの送信
+│    ├── __init__.py                         #create_app()による初期化
 │    │
-│    ├── auth
+│    ├── auth                                #ユーザー認証機能関連
 │    │    ├── routes.py
 │    │    ├── __init__.py
 │    │    │
@@ -81,7 +81,7 @@ noodle_management_system
 │    │  　         ├── register.html
 │    │  　         └── reset_password.html
 │    │
-│    └─── noodle
+│    └─── noodle                             #商品関連機能
 │         ├── routes.py
 │         ├── __init__.py
 │         │
@@ -90,11 +90,11 @@ noodle_management_system
 │       　         ├── base.html
 │       　         ├── form.html
 │       　         ├── list.html
-│       　         └── warning.html
+│       　         └── warning.html          #期限切れが近い商品一覧ページ
 │
 ├── Procfile
 ├── requirements.txt
-├── config.py
+├── config.py                                #設定ファイル
 ├── run.py
 ├── .env
 └── .gitignore
