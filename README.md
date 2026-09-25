@@ -59,30 +59,34 @@
 ```
 noodle_management_system
 │
-├──app
+├── README
+├── docs
+│    └─── architecture.md
+│
+├── app
 │    ├── forms.py
 │    ├── models.py
 │    ├── scheduler.py
 │    ├── utils.py
 │    ├── __init__.py
 │    │
-│    ├──auth
+│    ├── auth
 │    │    ├── routes.py
 │    │    ├── __init__.py
 │    │    │
-│    │    └─templates
-│    │  　     └─auth
+│    │    └─ templates
+│    │  　     └─ auth
 │    │  　         ├── forgot_password.html
 │    │  　         ├── login.html
 │    │  　         ├── register.html
 │    │  　         └── reset_password.html
 │    │
-│    └───noodle
+│    └─── noodle
 │         ├── routes.py
 │         ├── __init__.py
 │         │
-│         └─templates
-│       　     └─noodle
+│         └─ templates
+│       　     └─ noodle
 │       　         ├── base.html
 │       　         ├── form.html
 │       　         ├── list.html
@@ -92,7 +96,6 @@ noodle_management_system
 ├── requirements.txt
 ├── config.py
 ├── run.py
-├── scheduler_run.py
 ├── .env
 └── .gitignore
 ```

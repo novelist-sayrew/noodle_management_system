@@ -10,30 +10,34 @@ READMEで簡略化して記載した内容を、ここでは詳細に説明し�
 ```
 noodle_management_system
 │
-├──app
+├── README
+├── docs
+│    └─── architecture.md
+│
+├── app
 │    ├── forms.py
 │    ├── models.py
 │    ├── scheduler.py
 │    ├── utils.py
 │    ├── __init__.py
 │    │
-│    ├──auth
+│    ├── auth
 │    │    ├── routes.py
 │    │    ├── __init__.py
 │    │    │
-│    │    └─templates
-│    │  　     └─auth
+│    │    └─ templates
+│    │  　     └─ auth
 │    │  　         ├── forgot_password.html
 │    │  　         ├── login.html
 │    │  　         ├── register.html
 │    │  　         └── reset_password.html
 │    │
-│    └───noodle
+│    └─── noodle
 │         ├── routes.py
 │         ├── __init__.py
 │         │
-│         └─templates
-│       　     └─noodle
+│         └─ templates
+│       　     └─ noodle
 │       　         ├── base.html
 │       　         ├── form.html
 │       　         ├── list.html
@@ -135,19 +139,12 @@ Blueprintを先に登録することでルーティングやアプリ構造を�
 <br>
 
 ### 実行タイミング<br>
-interval？？？cron
+WSGIサーバーが複数のworkerプロセスを生成する都合上、cronによるジョブ設定を行うと、指定された時間ごとに全てのworkerが同時に起動してしまうため、二重起動が発生してしまう可能性がある。<br>
+そのリスクを避けるため、create_app()内でscheduler.start()を呼び出すようにコーディングを行い、アプリの起動を基準としてジョブが実行されるinterval形式を採用しました。<br>
 <br>
 
 ### 二重起動の防止
-グローバル環境下でscheduler.start()を起動すると、
-
-
-WSGI サーバーの複数プロセスでジョブが二重起動する？？？
-
-
-グローバル環境下の起動+create_app()内での起動によってジョブが二重に起動してしまうため、
-
-APSchedulerの起動に関する機能をscheduler.pyに分離し、create_app()内でのみ初期化・起動が実行されるようにしました。<br>
+WSGIサーバーの仕様により、グローバル環境下にscheduler.start()を置くと、親プロセス・子プロセスのそれぞれでscheduler.start()を読み込むことにより、ジョブが二重に起動してしまうため、APSchedulerの起動に関する機能をscheduler.pyに分離し、create_app()内でのみ初期化・起動が実行されるようにしました。<br>
 <br>
 
 ## 8. アプリ全体のセキュリティ設計<br>
