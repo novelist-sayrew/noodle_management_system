@@ -6,7 +6,7 @@
 <br>
 ## 2.使用例<br>
 <br>
-<div style="display: flex; gap: 20px;">
+<div>
     <img src="images/items_list_a.png" width="300">
     <img src="images/items_list_b.png" width="300">
 </div>
