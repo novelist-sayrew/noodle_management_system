@@ -4,19 +4,37 @@
 &nbsp; 登録したカップ麺の賞味期限を、一覧で確認することができるアプリです。<br>
 &nbsp; 賞味期限までの日数を自動で計算し、色分けすることによって視認性を高めています。<br>
 <br>
-## 2.使用例
+## 2.使用例<br>
+<br>
+<div style="display: flex; gap: 20px;">
+    <img src="images/items_list_a.png" width="300">
+    <img src="images/items_list_b.png" width="300">
+</div>
+<br>
 
-(画像)<br>
 #### 色分けの一覧<br>
 ・期限が6日以上 …… 黒<br>
 ・期限が5日以内 …… 黄<br>
 ・期限切れ …… 赤<br>
 <br>
-&nbsp; 商品一覧画面では、賞味期限が近い順に商品名が並びます。<br>
-&nbsp; また、賞味期限が切れた商品は、ページの最上部にまとめて表示されます。<br>
+商品一覧画面では、賞味期限が近い順に商品名が並びます。<br>
+<br>
 
-(画像)<br>
-&nbsp; 賞味期限が5日以内の商品は、別のページに一覧で表示されます。<br>
+<div>
+    <img src="images/top_page.png" width="300">
+</div>
+<br>
+
+また、賞味期限が切れた商品は、ページの最上部にまとめて表示されます。<br>
+<br>
+
+<div>
+    <img src="images/warning_items_list.png" width="300">
+</div>
+<br>
+
+賞味期限が5日以内の商品は、別のページに一覧で表示されます。<br>
+<br>
 <br>
 ※画像は全てイメージです。実際のものとは異なる場合があります。<br>
 <br>
