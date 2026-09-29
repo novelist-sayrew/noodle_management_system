@@ -7,9 +7,16 @@
 ## 2.使用例<br>
 <br>
 
-|  |  |
-|---|---|
-| <img src="images/items_list_a.png" width="300"> | <img src="images/items_list_b.png" width="300"> |
+<table>
+    <tr>
+        <td>
+            <img src="images/items_list_a.png" width="300"> 
+        </td>
+        <td>
+            <img src="images/items_list_b.png" width="300">
+        </td>
+    </tr>
+</table>
 
 <br>
 
@@ -21,24 +28,33 @@
 商品一覧画面では、賞味期限が近い順に商品名が並びます。<br>
 <br>
 
-|  |
-|---|
-|<img src="images/top_page.png" width="300">|
+<table>
+    <tr>
+        <td>
+            <img src="images/top_page.png" width="300">|
+        </td>
+    </tr>
+</table>
 
 <br>
 
 また、賞味期限が切れた商品は、ページの最上部にまとめて表示されます。<br>
 <br>
 
-|  |
-|---|
-|<img src="images/warning_items_list.png" width="300">|
+<table>
+    <tr>
+        <td>
+            <img src="images/warning_items_list.png" width="300">|
+        </td>
+    </tr>
+</table>
 
 <br>
 
 賞味期限が5日以内の商品は、別のページに一覧で表示されます。<br>
 <br>
 <br>
+
 ※画像は全てイメージです。実際のものとは異なる場合があります。<br>
 <br>
 ## 3.アプリの機能一覧
@@ -89,6 +105,7 @@
 ```
 noodle_management_system
 │
+├── images                                   #アプリのイメージ画像一覧
 ├── README.md                                #アプリ概要説明書(本ファイル)
 ├── docs
 │    └─── architecture.md                    #アプリ内部設計書
