@@ -6,10 +6,11 @@
 <br>
 ## 2.使用例<br>
 <br>
-<div>
-    <img src="images/items_list_a.png" width="300">
-    <img src="images/items_list_b.png" width="300">
-</div>
+
+|  |  |
+|---|---|
+| <img src="images/items_list_a.png" width="300"> | <img src="images/items_list_b.png" width="300"> |
+
 <br>
 
 #### 色分けの一覧<br>
@@ -20,17 +21,19 @@
 商品一覧画面では、賞味期限が近い順に商品名が並びます。<br>
 <br>
 
-<div>
-    <img src="images/top_page.png" width="300">
-</div>
+|  |
+|---|
+|<img src="images/top_page.png" width="300">|
+
 <br>
 
 また、賞味期限が切れた商品は、ページの最上部にまとめて表示されます。<br>
 <br>
 
-<div>
-    <img src="images/warning_items_list.png" width="300">
-</div>
+|  |
+|---|
+|<img src="images/warning_items_list.png" width="300">|
+
 <br>
 
 賞味期限が5日以内の商品は、別のページに一覧で表示されます。<br>
