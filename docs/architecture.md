@@ -10,18 +10,19 @@ READMEで簡略化して記載した内容を、ここでは詳細に説明し�
 ```
 noodle_management_system
 │
-├── README.md                               #アプリ概要説明書
+├── images                                   #アプリのイメージ画像一覧
+├── README.md                                #アプリ概要説明書
 ├── docs
-│    └─── architecture.md                   #アプリ内部設計書(本ファイル)
+│    └─── architecture.md                    #アプリ内部設計書(本ファイル)
 │
-├── app                                     #アプリシステム関連
-│    ├── forms.py                           #WTForm定義
-│    ├── models.py                          #ユーザー・商品のモデル定義
-│    ├── scheduler.py                       #APSchedulerの初期化・設定・ジョブ登録
-│    ├── utils.py                           #パスワード再設定メール送信
-│    ├── __init__.py                        #create_app()・拡張機能の初期化
+├── app                                      #アプリシステム関連
+│    ├── forms.py                            #WTForm定義
+│    ├── models.py                           #ユーザー・商品のモデル定義
+│    ├── scheduler.py                        #APSchedulerの初期化・設定・ジョブ登録
+│    ├── utils.py                            #パスワード再設定メール送信
+│    ├── __init__.py                         #create_app()・拡張機能の初期化
 │    │
-│    ├── auth                               #ユーザー認証機能関連
+│    ├── auth                                #ユーザー認証機能関連
 │    │    ├── routes.py
 │    │    ├── __init__.py
 │    │    │
@@ -32,7 +33,7 @@ noodle_management_system
 │    │  　         ├── register.html
 │    │  　         └── reset_password.html
 │    │
-│    └─── noodle                            #商品関連機能
+│    └─── noodle                             #商品関連機能
 │         ├── routes.py
 │         ├── __init__.py
 │         │
@@ -43,10 +44,10 @@ noodle_management_system
 │       　         ├── list.html
 │       　         └── warning.html
 │
-├── Procfile                                #本番環境(Gunicorn)起動設定    
+├── Procfile                                 #本番環境(Gunicorn)起動設定    
 ├── requirements.txt
-├── config.py                               #Configクラス設定
-├── run.py                                  #ローカル起動用
+├── config.py                                #Configクラス設定
+├── run.py                                   #ローカル起動用
 ├── scheduler_run.py
 ├── .env
 └── .gitignore
