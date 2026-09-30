@@ -1,28 +1,30 @@
-# 内部設計説明書<br>
+# Internal Design Documentation<br>
 <br>
 
-## 1. 概要<br>
-このページは、noodle_management_systemにおける内部設計や処理内容における詳細な情報をまとめた資料です。<br>
-READMEで簡略化して記載した内容を、ここでは詳細に説明します。<br>
+## 1. Overview<br>
+&nbsp; This page summarizes detailed information about the internal design and processing logic of the noodle_management_system.<br>
+&nbsp; While the README provides a simplified overview, this document explains each component in greater depth.<br>
 <br>
 
-## 2. ディレクトリ構成
+## 2. Directory Structure
 ```
 noodle_management_system
 │
-├── images                                   #アプリのイメージ画像一覧
-├── README.md                                #アプリ概要説明書
+├── images                                   # Application demo images
+├── README.md                                # Application overview (this file)
+├── README_日本語版.md 
 ├── docs
-│    └─── architecture.md                    #アプリ内部設計書(本ファイル)
+│    ├─── architecture.md                    # Internal architecture documentation
+│    └─── architecture_日本語版.md
 │
-├── app                                      #アプリシステム関連
-│    ├── forms.py                            #WTForm定義
-│    ├── models.py                           #ユーザー・商品のモデル定義
-│    ├── scheduler.py                        #APSchedulerの初期化・設定・ジョブ登録
-│    ├── utils.py                            #パスワード再設定メール送信
-│    ├── __init__.py                         #create_app()・拡張機能の初期化
+├── app                                      # Application modules
+│    ├── forms.py
+│    ├── models.py
+│    ├── scheduler.py                        # APScheduler jobs
+│    ├── utils.py                            # Password reset email utilities
+│    ├── __init__.py                         # create_app() initialization
 │    │
-│    ├── auth                                #ユーザー認証機能関連
+│    ├── auth                                # User authentication module
 │    │    ├── routes.py
 │    │    ├── __init__.py
 │    │    │
@@ -33,7 +35,7 @@ noodle_management_system
 │    │  　         ├── register.html
 │    │  　         └── reset_password.html
 │    │
-│    └─── noodle                             #商品関連機能
+│    └─── noodle                             # Product management module
 │         ├── routes.py
 │         ├── __init__.py
 │         │
@@ -42,134 +44,139 @@ noodle_management_system
 │       　         ├── base.html
 │       　         ├── form.html
 │       　         ├── list.html
-│       　         └── warning.html
+│       　         └── warning.html          # Items nearing expiration
 │
-├── Procfile                                 #本番環境(Gunicorn)起動設定    
+├── Procfile
 ├── requirements.txt
-├── config.py                                #Configクラス設定
-├── run.py                                   #ローカル起動用
-├── scheduler_run.py
+├── config.py                                # Configuration file
+├── run.py
 ├── .env
 └── .gitignore
 ```
-## 3. create_app()の役割<br>
-本アプリでは、テスト環境から本番環境への切り替えのしやすさ、SQLAlchemy・Flask-Login・APSchedulerなどの拡張機能を安全に初期化できる、などの理由から、アプリケーションファクトリ構造を採用しています。<br>
+## 3. Role of create_app()<br>
+&nbsp; This application adopts the application factory pattern to simplify switching between development and production environments, and to safely initialize extensions such as SQLAlchemy, Flask‑Login, and APScheduler.<br>
 <br>
 
-### 初期化処理の順番<br>
-create_app() 内では以下の順序で初期化を行っています。<br>
+### Initialization Order<br>
+The following steps are executed inside create_app():<br>
 <br>
 
-#### 1.  create_app()によるFlaskインスタンスの作成<br>
+#### 1. Create the Flask instance via create_app()<br>
+#### 2. Load configuration from the Config class in config.py<br>
+#### 3. Load environment variables and register settings such as DATABASE_URI<br>
+#### 4. Initialize extensions such as LoginManager and SQLAlchemy<br>
+##### Reasons:<br>
+・Extensions like SQLAlchemy cannot be initialized until configuration values (e.g., DATABASE_URI) are loaded; otherwise a RuntimeError occurs.<br>
+・Blueprint registration requires extensions such as LoginManager to be initialized beforehand.<br>
+・Since DB models reference the db instance, importing models before initializing db causes circular imports.<br>
 
-#### 2.  config.pyからConfigクラスの設定を読み込む<br>
+#### 5. Import DB models such as User<br>
+##### Reasons:<br>
+&nbsp; This ensures SQLAlchemy registers the models and prevents ImportError or circular import issues.<br>
 
-#### 3.  環境変数から設定を読み込み、DATABASE_URIなどを登録<br>
+#### 6. Create the application context<br>
+##### Reasons:<br>
+・Blueprint registration requires current_app, and DB table creation requires current_config.<br>
+・To use these features, the application context must be established.<br>
 
-#### 4.  LoginManager・SQLAlchemyなどの拡張機能の初期化<br>
-・SQLAlchemyなどの拡張機能は、configに設定されたDATABASE_URIなどの設定値が読み込まれていないと初期化をすることができず、それによってRuntimeErrorが発生するため<br>
-・Blueprintを使用するためにはLoginManagerなどの拡張機能が必要であり、Blueprintを登録する前に、それらの機能を初期化しておかなければならないため<br>
-・DBモデルがdbインスタンスを参照している都合上、dbを初期化する前にDBモデルを読み込んでしまうと、循環インポートが発生してしまうため<br>
+#### 7. Register Blueprints<br>
+##### Reasons:<br>
+Routing is separated by responsibility:<br>
+・auth — user registration, authentication, password reset<br>
+・noodle — product editing, deletion, expiration calculation<br>
 
-#### 5.  UserなどのDBモデルのインポート<br>
-SQLAlchemyにモデルを登録させることによって、ImportErrorや循環インポートを防ぐため。<br>
+#### 8. Create DB tables<br>
+##### Reasons:<br>
+&nbsp; Registering Blueprints first clarifies routing and application structure, ensuring correct table creation.<br>
 
-#### 6.  アプリケーションコンテキストの作成<br>
- Blueprintの登録にはcurrent_appなどの機能が、DBテーブルの作成にはcurrent_configなどの機能が必要であり、それらの機能を使えるようにするために、アプリケーションコンテキストの作成を行わなければならないため。<br>
-
-#### 7.  Blueprintの登録<br>
-それぞれの役割や機能によってルーティングを行うため。<br>
-・auth …… ユーザー情報の登録・認証など、ユーザーに関する機能。<br>
-・noodle …… 商品情報の編集・削除、賞味期限の自動算出など、商品情報に関する機能。<br>
-
-#### 8.  DBのテーブルを作成<br>
-Blueprintを先に登録することでルーティングやアプリ構造を明確化し、DBのテーブルを正しく生成できるようにするため。<br>
-
-#### 9. トップページのルートを定義<br>
+#### 9. Define the top‑level route<br>
 <br>
 
-## 4. Blueprintの構成
-### auth(認証機能)<br>
-・ユーザー情報の登録・ログイン認証<br>
-・ログアウト処理<br>
-・トークンの作成・パスワード再設定メールの送信<br>
-・パスワード再設定処理・無効なトークンの判定とエラー処理<br>
+## 4. Blueprint Structure<br>
+### auth (Authentication Features)<br>
+・User registration and login authentication<br>
+・Logout processing<br>
+・Token generation and password reset email sending<br>
+・Password reset handling, invalid token detection, and error processing<br>
 <br>
 
-### noodle(商品管理機能)<br>
-・ベースとなる「/」ページの作成<br>
-・賞味期限の自動算出<br>
-・一覧画面において、商品を賞味期限が近い順にソート<br>
-・賞味期限が5日以内に迫った商品のみを表示するページの作成<br>
-・商品データの編集・追加・削除処理<br>
+### noodle (Product Management Features)<br>
+・Base “/” page<br>
+・Automatic expiration date calculation<br>
+・Sorting products by expiration date<br>
+・Page showing only products expiring within 5 days<br>
+・Product editing, addition, and deletion<br>
 <br>
 
-## 5. パスワード再設定システムの簡易フロー<br>
-#### 1. ユーザーが「パスワードを忘れた方はこちら」を押す<br>
-#### 2. ユーザーがブラウザにメールアドレスを入力して送信する<br>
-#### 3. トークンを生成してDBに保存する<br>
-#### 4. Flaskアプリがトークン付き URL をメールで送信する<br>
-#### 5. メールを受信したユーザーが、メールに添付されたURLにアクセスする<br>
-#### 6. Flaskアプリがトークンが有効かどうかを検証し、パスワード再設定ページを表示する<br>
-#### 7. ユーザーが新しいパスワードを入力して送信する<br>
-#### 8. FlaskアプリがDBに保存されたパスワードを更新し、トークンを無効化する<br>
-#### 9. Flaskアプリがログインページにリダイレクトする<br>
+## 5. Simplified Password Reset Flow<br>
+1. User clicks “Forgot your password?”<br>
+2. User enters their email address<br>
+3. A token is generated and stored in the DB<br>
+4. Flask sends an email containing a URL with the token<br>
+5. User accesses the URL<br>
+6. Flask validates the token and displays the password reset page<br>
+7. User submits a new password<br>
+8. Flask updates the password in the DB and invalidates the token<br>
+9. Flask redirects the user to the login page<br>
 <br>
 
-## 6. DB モデルの設計意図<br>
-#### Userモデル<br>
+## 6. DB Model Design Intent<br>
+#### User Model<br>
 ・id<br>
-・username<br> 
+・username<br>
 ・email<br>
 ・password_hash<br>
 <br>
 
-#### Noodleモデル<br>
+#### Noodle Model<br>
 ・id<br>
 ・name<br>
-・year、month、day<br>  
-・リレーション無し（全ユーザーで同じデータを共有するため）<br>
+・year, month, day<br>
+・No relations (data is shared among all users)<br>
 <br>
 
-## 7. APSchedulerのジョブ設計<br>
-### ジョブの設計意図とセキュリティ設計
-使用済みのトークンを使用したリプレイ攻撃やトークン使い回し攻撃などのサイバー攻撃の防止・DBから不必要なデータを消去することでデータの肥大化を防ぎ、パフォーマンス性を向上させる等の観点から、トークンの有効期限を30分に設定し、1時間ごとにintervalによる使用済みトークンの削除処理を行っています。<br>
+## 7. APScheduler Job Design<br>
+### Job Purpose and Security Considerations<br>
+&nbsp; To prevent replay attacks and token reuse attacks, and to avoid unnecessary DB growth, tokens expire after 30 minutes, and an interval job runs every 1 hour to delete expired or used tokens.<br>
 <br>
 
-### 実行タイミング<br>
-WSGIサーバーが複数のworkerプロセスを生成する都合上、cronによるジョブ設定を行うと、指定された時間ごとに全てのworkerが同時に起動してしまうため、二重起動が発生してしまう可能性がある。<br>
-そのリスクを避けるため、create_app()内でscheduler.start()を呼び出すようにコーディングを行い、アプリの起動を基準としてジョブが実行されるinterval形式を採用しました。<br>
+### Execution Timing<br>
+&nbsp; WSGI servers spawn multiple worker processes.
+If cron scheduling is used, every worker may execute the job simultaneously, causing duplicate execution.<br>
+&nbsp; To avoid this, scheduler.start() is called inside create_app(), and interval scheduling is used so jobs run relative to application startup.<br>
 <br>
 
-### 二重起動の防止
-WSGIサーバーはworkerをforkするため、グローバル環境下にscheduler.start()を置くと、親プロセスとforkされた子プロセスのそれぞれがscheduler.start()を読み込むことにより、ジョブが二重に起動してしまうため、APSchedulerの起動に関する機能をscheduler.pyに分離し、create_app()内でのみ初期化・起動が実行されるようにしました。<br>
+### Preventing Duplicate Execution<br>
+&nbsp; Because WSGI workers are forked, placing scheduler.start() in the global scope causes both parent and child processes to start the scheduler.<br>
+&nbsp; To avoid this, scheduler initialization is separated into scheduler.py, and the scheduler is started only inside create_app().<br>
 <br>
 
-## 8. アプリ全体のセキュリティ設計<br>
-#### SECRET_KEYの設定<br>
-・Cookieの改ざんを防ぐことによる、セッションハイジャックの防止<br>
-・CSRF攻撃対策<br>
+## 8. Application‑Wide Security Design<br>
+#### SECRET_KEY Configuration<br>
+・Prevents cookie tampering → protects against session hijacking<br>
+・Enables CSRF protection<br>
 <br>
 
-#### 環境変数(.env)による機密情報の分離<br>
-・パスワードやメールの設定をハードコーディングしないことで、機密情報の漏洩を防ぐ<br>
+#### Environment Variables (.env)<br>
+・Prevents hard‑coding sensitive information<br>
+・Protects passwords and email credentials<br>
 <br>
 
-#### パスワードのハッシュ化<br>
-・パスワード+ハッシュ化+ソルトによる、パスワード漏洩リスクの軽減とブルートフォース攻撃の防止<br>
+#### Password Hashing<br>
+・Password + hashing + salt reduces leakage risk<br>
+・Protects against brute‑force attacks<br>
 <br>
 
-#### APSchedulerによるトークンの自動削除<br>
-・期限切れトークンを自動削除することによる、リプレイ攻撃の防止<br>
-・使用済みトークンを自動削除することによる、トークン使い回し攻撃の防止<br>
-・DBの負荷を軽減することによる、DoS攻撃リスクの軽減<br>
+#### APScheduler Token Deletion<br>
+・Prevents replay attacks<br>
+・Prevents token reuse attacks<br>
+・Reduces DB load → lowers DoS risk<br>
+
+#### HTTPS Encryption<br>
+・TLS encrypts communication (login info, tokens), preventing man‑in‑the‑middle attacks.<br>
 <br>
 
-#### HTTPSによる通信の暗号化<br>
-　TLS方式で通信内容(ログイン情報やトークンなど)を暗号化することによる、中間者攻撃の防止<br>
-<br>
-
-## 9. 今後の展望・改善案<br>
-・同時編集によるデータ整合性の問題<br>
-・商品バーコード読み取り機能の実装など利便性の向上<br>
-・編集履歴・削除履歴の実装<br>
+## 9. Future Improvements<br>
+・Data consistency issues caused by simultaneous editing<br>
+・Barcode scanning for improved usability<br>
+・Edit history and deletion history features<br>
