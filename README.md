@@ -1,10 +1,11 @@
 # noodle_management_system
 
-## 1.概要
-&nbsp; 登録したカップ麺の賞味期限を、一覧で確認することができるアプリです。<br>
-&nbsp; 賞味期限までの日数を自動で計算し、色分けすることによって視認性を高めています。<br>
+## 1. Overview
+&nbsp; This application allows users to manage and check the expiration dates of registered cup noodles.<br>
+&nbsp; The remaining days until expiration are automatically calculated, and items are color‑coded to improve visibility.<br>
 <br>
-## 2.使用例<br>
+
+## 2. Usage Examples
 <br>
 
 <table>
@@ -20,12 +21,12 @@
 
 <br>
 
-#### 色分けの一覧<br>
-・期限が6日以上 …… 黒<br>
-・期限が5日以内 …… 黄<br>
-・期限切れ …… 赤<br>
+#### Color Coding Rules<br>
+・6 days or more remaining …… Black<br>
+・5 days or less remaining …… Yellow<br>
+・Expired …… Red<br>
 <br>
-商品一覧画面では、賞味期限が近い順に商品名が並びます。<br>
+&nbsp; On the product list page, items are sorted in ascending order based on how soon their expiration date is approaching.<br>
 <br>
 
 <table>
@@ -38,7 +39,7 @@
 
 <br>
 
-また、賞味期限が切れた商品は、ページの最上部にまとめて表示されます。<br>
+&nbsp; Expired items are grouped and displayed at the top of the page.<br>
 <br>
 
 <table>
@@ -51,73 +52,77 @@
 
 <br>
 
-賞味期限が5日以内の商品は、別のページに一覧で表示されます。<br>
+&nbsp; Items with 5 days or less remaining are displayed on a dedicated warning page.<br>
 <br>
 <br>
 
-※画像は全てイメージです。実際のものとは異なる場合があります。<br>
-<br>
-## 3.アプリの機能一覧
-・ユーザー情報の登録・ログイン<br>
-・セッション管理によるログイン状態の保持<br>
-・パスワード再設定機能(トークン方式)<br>
-・商品情報(商品名・賞味期限)の追加・編集・削除<br>
-・賞味期限の自動計算・日数による色分け表示<br>
-・期限が近い商品の専用ページによる表示<br>
+Note: All images are for demonstration purposes only and may differ from the actual application.<br>
 <br>
 
-### セキュリティ関連機能<br>
-・SECRET_KEYによるCSRF攻撃対策<br>
-・環境変数(.env)による機密情報の分離<br>
-・パスワード+ハッシュ化+ソルトによるパスワードの保存<br>
-・APSchedulerによる期限切れ・使用済みトークンの自動削除<br>
-・HTTPSによる通信内容の暗号化<br>
+## 3. Features<br>
+・User registration and login<br>
+・Session management to maintain login state<br>
+・Password reset via token-based authentication<br>
+・Add, edit, and delete product information (name+expiration date)<br>
+・Automatic calculation of remaining days + color-coded display<br>
+・Dedicated page for items nearing expiration<br>
 <br>
 
-## 4.使用した技術一覧
-### 言語・フレームワーク
+### Security Features<br>
+・CSRF protection using SECRET_KEY<br>
+・Separation of sensitive information using environment variables(.env)<br>
+・Secure password storage using hashing + salt<br>
+・Automatic deletion of expired or used tokens via APScheduler<br>
+・Encrypted communication using HTTPS<br>
+<br>
+
+## 4. Technologies Used<br>
+### Language & Framework<br>
 ・Python 3.x<br>
 ・Flask<br>
 
-### ライブラリ・拡張機能
+### Libraries & Extensions<br>
 ・Flask-Login<br>
 ・Flask-WTF<br>
 ・Jinja2<br>
 ・Werkzeug<br>
 
-### データベース・ORM
+### Database & ORM<br>
 ・SQLite<br>
 ・SQLAlchemy ORM<br>
 
-### バックグランド処理
+### Background Processing<br>
 ・APScheduler<br>
 
-### 環境管理・設定
+### Environment & Configuration<br>
 ・Python-dotenv<br>
 ・config.py<br>
 
-### その他の構造・設計
-・Blueprint<br>
-・create_app()方式によるアプリの起動<br>
-・アプリケーションコンテキスト<br>
+### Architecture & Design<br>
+・Blueprint structure<br>
+・Application initialization using create_app()<br>
+・Application context management<br>
 <br>
-## 5.ファイル構造
+
+## 5. Project Structure
 ```
 noodle_management_system
 │
-├── images                                   #アプリのイメージ画像一覧
-├── README.md                                #アプリ概要説明書(本ファイル)
+├── images                                   # Application demo images
+├── README.md                                # Application overview (this file)
+├── README_日本語版.md 
 ├── docs
-│    └─── architecture.md                    #アプリ内部設計書
+│    ├─── architecture.md                    # Internal architecture documentation
+│    └─── architecture_日本語版.md
 │
-├── app                                      #アプリシステム関連
+├── app                                      # Application modules
 │    ├── forms.py
 │    ├── models.py
-│    ├── scheduler.py                        #APSchesuler処理関連
-│    ├── utils.py                            #パスワード再設定メールの送信
-│    ├── __init__.py                         #create_app()による初期化
+│    ├── scheduler.py                        # APScheduler jobs
+│    ├── utils.py                            # Password reset email utilities
+│    ├── __init__.py                         # create_app() initialization
 │    │
-│    ├── auth                                #ユーザー認証機能関連
+│    ├── auth                                # User authentication module
 │    │    ├── routes.py
 │    │    ├── __init__.py
 │    │    │
@@ -128,7 +133,7 @@ noodle_management_system
 │    │  　         ├── register.html
 │    │  　         └── reset_password.html
 │    │
-│    └─── noodle                             #商品関連機能
+│    └─── noodle                             # Product management module
 │         ├── routes.py
 │         ├── __init__.py
 │         │
@@ -137,40 +142,43 @@ noodle_management_system
 │       　         ├── base.html
 │       　         ├── form.html
 │       　         ├── list.html
-│       　         └── warning.html          #期限切れが近い商品一覧ページ
+│       　         └── warning.html          # Items nearing expiration
 │
 ├── Procfile
 ├── requirements.txt
-├── config.py                                #設定ファイル
+├── config.py                                # Configuration file
 ├── run.py
 ├── .env
 └── .gitignore
 ```
-## 6.設計の工夫
-・賞味期限の色分けによる視認性の向上<br>
-・期限が近い商品の専用ページ<br>
-・ユーザーの動線に沿ったUI設計<br>
-・年・月・日による賞味期限の管理<br>
-<br>
-## 7.閲覧者がアプリを起動できるようにするためのセットアップ<br>
-### 推奨環境<br>
-・Python3.10～3.12<br>
-・Ubuntu(Linux)<br>
-
-### 実装手順<br>
-1. リポジトリをcloneする。<br>
-2. 仮想環境を作成し、有効化する。<br>
-3. .envファイルを作成し、SECRET_KEY・DATABASE_URLなどを設定。<br>
-4. 必要なパッケージのインストール。<br>
-5. DBの初期化。<br>
-6. アプリを起動する。<br>
 <br>
 
-## 8.デプロイ(試作品)が掲載されたサイトのURL
-&nbsp; 現在準備中です。<br>
+## 6. Design Highlights<br>
+・Color-coded expiration display for improved visibility<br>
+・Dedicated page for items nearing expiration<br>
+・UI designed to match user workflow<br>
+・Expiration dates managed using year / month / day format<br>
 <br>
 
-## 9.製作者情報
-●製作者 : 藤井 雄也<br>
-●役割 : アプリ全般の制作。<br>
-●目的 : プログラミングの勉強のため。
+## 7. Setup Instructions (for running the application)<br>
+### Recommended Environment<br>
+・Python 3.10–3.12<br>
+・Ubuntu (Linux)<br>
+
+### Installation Steps<br>
+1. Clone the repository<br> 
+2. Create and activate a virtual environment<br>
+3. Create a .env file and set SECRET_KEY, DATABASE_URL, etc.<br>
+4. Install required packages<br>
+5. Initialize the database<br>
+6. Start the application<br>
+<br>
+
+## 8. Deployment (Prototype)<br>
+Deployment URL is currently under preparation.<br>
+<br>
+
+## 9. Author<br>
+●Name: Yuya Fujii<br>
+●Role: Full development of the application<br>
+●Purpose: Learning and practicing programming

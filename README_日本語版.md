@@ -1,0 +1,182 @@
+# noodle_management_system
+
+## 1. 概要
+登録したカップ麺の賞味期限を、一覧で確認することができるアプリです。<br>
+賞味期限までの日数を自動で計算し、色分けすることによって視認性を高めています。<br>
+<br>
+
+## 2. 使用例<br>
+<br>
+
+<table>
+    <tr>
+        <td>
+            <img src="images/items_list_a.png" width="300"> 
+        </td>
+        <td>
+            <img src="images/items_list_b.png" width="300">
+        </td>
+    </tr>
+</table>
+
+<br>
+
+#### 色分けの一覧<br>
+・期限が6日以上 …… 黒<br>
+・期限が5日以内 …… 黄<br>
+・期限切れ …… 赤<br>
+<br>
+商品一覧画面では、賞味期限が近い順に商品名が並びます。<br>
+<br>
+
+<table>
+    <tr>
+        <td>
+            <img src="images/top_page.png" width="300">|
+        </td>
+    </tr>
+</table>
+
+<br>
+
+また、賞味期限が切れた商品は、ページの最上部にまとめて表示されます。<br>
+<br>
+
+<table>
+    <tr>
+        <td>
+            <img src="images/warning_items_list.png" width="300">|
+        </td>
+    </tr>
+</table>
+
+<br>
+
+賞味期限が5日以内の商品は、別のページに一覧で表示されます。<br>
+<br>
+<br>
+
+※画像は全てイメージです。実際のものとは異なる場合があります。<br>
+<br>
+
+## 3. アプリの機能一覧
+・ユーザー情報の登録・ログイン<br>
+・セッション管理によるログイン状態の保持<br>
+・パスワード再設定機能(トークン方式)<br>
+・商品情報(商品名・賞味期限)の追加・編集・削除<br>
+・賞味期限の自動計算・日数による色分け表示<br>
+・期限が近い商品の専用ページによる表示<br>
+<br>
+
+### セキュリティ関連機能<br>
+・SECRET_KEYによるCSRF攻撃対策<br>
+・環境変数(.env)による機密情報の分離<br>
+・パスワード+ハッシュ化+ソルトによるパスワードの保存<br>
+・APSchedulerによる期限切れ・使用済みトークンの自動削除<br>
+・HTTPSによる通信内容の暗号化<br>
+<br>
+
+## 4. 使用した技術一覧
+### 言語・フレームワーク
+・Python 3.x<br>
+・Flask<br>
+
+### ライブラリ・拡張機能
+・Flask-Login<br>
+・Flask-WTF<br>
+・Jinja2<br>
+・Werkzeug<br>
+
+### データベース・ORM
+・SQLite<br>
+・SQLAlchemy ORM<br>
+
+### バックグランド処理
+・APScheduler<br>
+
+### 環境管理・設定
+・Python-dotenv<br>
+・config.py<br>
+
+### その他の構造・設計
+・Blueprint<br>
+・create_app()方式によるアプリの起動<br>
+・アプリケーションコンテキスト<br>
+<br>
+
+## 5. ファイル構造
+```
+noodle_management_system
+│
+├── images                                   # アプリのイメージ画像一覧
+├── README.md                                # アプリ概要説明書(本ファイル)
+├── docs
+│    └─── architecture.md                    # アプリ内部設計書
+│
+├── app                                      # アプリシステム関連
+│    ├── forms.py
+│    ├── models.py
+│    ├── scheduler.py                        # APSchesuler処理関連
+│    ├── utils.py                            # パスワード再設定メールの送信
+│    ├── __init__.py                         # create_app()による初期化
+│    │
+│    ├── auth                                # ユーザー認証機能関連
+│    │    ├── routes.py
+│    │    ├── __init__.py
+│    │    │
+│    │    └─ templates
+│    │  　     └─ auth
+│    │  　         ├── forgot_password.html
+│    │  　         ├── login.html
+│    │  　         ├── register.html
+│    │  　         └── reset_password.html
+│    │
+│    └─── noodle                             # 商品関連機能
+│         ├── routes.py
+│         ├── __init__.py
+│         │
+│         └─ templates
+│       　     └─ noodle
+│       　         ├── base.html
+│       　         ├── form.html
+│       　         ├── list.html
+│       　         └── warning.html          # 期限切れが近い商品一覧ページ
+│
+├── Procfile
+├── requirements.txt
+├── config.py                                # 設定ファイル
+├── run.py
+├── .env
+└── .gitignore
+```
+<br>
+
+## 6. 設計の工夫
+・賞味期限の色分けによる視認性の向上<br>
+・期限が近い商品の専用ページ<br>
+・ユーザーの動線に沿ったUI設計<br>
+・年・月・日による賞味期限の管理<br>
+<br>
+
+## 7. 閲覧者がアプリを起動できるようにするためのセットアップ<br>
+### 推奨環境<br>
+・Python3.10～3.12<br>
+・Ubuntu(Linux)<br>
+
+### 実装手順<br>
+1. リポジトリをcloneする。<br>
+2. 仮想環境を作成し、有効化する。<br>
+3. .envファイルを作成し、SECRET_KEY・DATABASE_URLなどを設定。<br>
+4. 必要なパッケージのインストール。<br>
+5. DBの初期化。<br>
+6. アプリを起動する。<br>
+<br>
+
+## 8. デプロイ(試作品)が掲載されたサイトのURL
+現在準備中です。<br>
+<br>
+
+## 9. 製作者情報
+●製作者 : 藤井 雄也<br>
+●役割 : アプリ全般の制作。<br>
+●目的 : プログラミングの勉強のため。
