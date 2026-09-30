@@ -69,25 +69,30 @@ The following steps are executed inside create_app():<br>
 ・Extensions like SQLAlchemy cannot be initialized until configuration values (e.g., DATABASE_URI) are loaded; otherwise a RuntimeError occurs.<br>
 ・Blueprint registration requires extensions such as LoginManager to be initialized beforehand.<br>
 ・Since DB models reference the db instance, importing models before initializing db causes circular imports.<br>
+<br>
 
 #### 5. Import DB models such as User<br>
 ##### Reasons:<br>
 &nbsp; This ensures SQLAlchemy registers the models and prevents ImportError or circular import issues.<br>
+<br>
 
 #### 6. Create the application context<br>
 ##### Reasons:<br>
 ・Blueprint registration requires current_app, and DB table creation requires current_config.<br>
 ・To use these features, the application context must be established.<br>
+<br>
 
 #### 7. Register Blueprints<br>
 ##### Reasons:<br>
 Routing is separated by responsibility:<br>
 ・auth — user registration, authentication, password reset<br>
 ・noodle — product editing, deletion, expiration calculation<br>
+<br>
 
 #### 8. Create DB tables<br>
 ##### Reasons:<br>
 &nbsp; Registering Blueprints first clarifies routing and application structure, ensuring correct table creation.<br>
+<br>
 
 #### 9. Define the top‑level route<br>
 <br>
